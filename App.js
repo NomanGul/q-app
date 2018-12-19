@@ -1,21 +1,47 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
+import Loading from "./components/Loading";
+import Login from "./components/Login";
+import Home from "./components/Home";
+import {
+  createStackNavigator,
+  createAppContainer,
+  createSwitchNavigator
+} from "react-navigation";
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
-}
+// export default class App extends React.Component {
+//   render() {
+//     return (
+//         <Login />
+//     );
+//   }
+// }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const AppStack = createStackNavigator({ Home: Home });
+const AuthStack = createStackNavigator({ Login: Login });
+
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      AuthLoading: Loading,
+      App: AppStack,
+      Auth: AuthStack
+      // Auth: AuthStack,
+    },
+    {
+      initialRouteName: "AuthLoading"
+    }
+  )
+);
+
+// const AppNavigator = createStackNavigator(
+//   {
+//     Login: Login,
+//     Home: Home
+//   },
+//   {
+//     initialRouteName: "Login"
+//   }
+// );
+
+// export default createAppContainer(AppNavigator);
