@@ -3,6 +3,7 @@ import { View } from "react-native";
 import Loading from "./components/Loading";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Company from "./components/Company";
 import {
   createStackNavigator,
   createAppContainer,
@@ -17,8 +18,8 @@ import {
 //   }
 // }
 
-const AppStack = createStackNavigator({ Home: Home });
-const AuthStack = createStackNavigator({ Login: Login });
+const AppStack = createStackNavigator({ Home, Company });
+const AuthStack = createStackNavigator({ Login });
 
 export default createAppContainer(
   createSwitchNavigator(
@@ -45,3 +46,9 @@ export default createAppContainer(
 // );
 
 // export default createAppContainer(AppNavigator);
+
+/* Colors
+Primary: #8e24aa
+P-Light: #c158dc
+P-Dark: #5c007a
+*/
